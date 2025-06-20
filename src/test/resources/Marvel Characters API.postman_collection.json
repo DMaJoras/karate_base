@@ -1,0 +1,672 @@
+{
+	"info": {
+		"_postman_id": "1cee2406-9bba-4ff8-a447-f24921860321",
+		"name": "Marvel Characters API",
+		"description": "Colección de pruebas para la API REST de personajes de Marvel, incluyendo casos exitosos, validaciones y errores de nombre duplicado. Ahora con username en la ruta.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21065204"
+	},
+	"item": [
+		{
+			"name": "Obtener todos los personajes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://bp-se-test-cabcd9b246a5.herokuapp.com/testuser/api/characters",
+					"protocol": "http",
+					"host": [
+						"bp-se-test-cabcd9b246a5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"testuser",
+						"api",
+						"characters"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK - Lista vacía",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://bp-se-test-cabcd9b246a5.herokuapp.com/testuser/api/characters",
+							"protocol": "http",
+							"host": [
+								"bp-se-test-cabcd9b246a5",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"testuser",
+								"api",
+								"characters"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": "[]"
+				}
+			]
+		},
+		{
+			"name": "Obtener personaje por ID (exitoso)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://bp-se-test-cabcd9b246a5.herokuapp.com/testuser/api/characters/1",
+					"protocol": "http",
+					"host": [
+						"bp-se-test-cabcd9b246a5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"testuser",
+						"api",
+						"characters",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://bp-se-test-cabcd9b246a5.herokuapp.com/testuser/api/characters/:id",
+							"protocol": "http",
+							"host": [
+								"bp-se-test-cabcd9b246a5",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"testuser",
+								"api",
+								"characters",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "276"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": "{\n  \"id\": 1,\n  \"name\": \"Iron Man\",\n  \"alterego\": \"Tony Stark\",\n  \"description\": \"Genius billionaire\",\n  \"powers\": [\"Armor\", \"Flight\"]\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener personaje por ID (no existe)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://bp-se-test-cabcd9b246a5.herokuapp.com/testuser/api/characters/999",
+					"protocol": "http",
+					"host": [
+						"bp-se-test-cabcd9b246a5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"testuser",
+						"api",
+						"characters",
+						"999"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "404 Not Found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://bp-se-test-cabcd9b246a5.herokuapp.com/testuser/api/characters/999",
+							"protocol": "http",
+							"host": [
+								"bp-se-test-cabcd9b246a5",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"testuser",
+								"api",
+								"characters",
+								"999"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": "{\n  \"error\": \"Character not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear personaje (exitoso)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Iron Man\",\n  \"alterego\": \"Tony Stark\",\n  \"description\": \"Genius billionaire\",\n  \"powers\": [\"Armor\", \"Flight\"]\n}"
+				},
+				"url": {
+					"raw": "http://bp-se-test-cabcd9b246a5.herokuapp.com/testuser/api/characters",
+					"protocol": "http",
+					"host": [
+						"bp-se-test-cabcd9b246a5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"testuser",
+						"api",
+						"characters"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "201 Created",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n  \"name\": \"Silver surfer\",\r\n  \"alterego\": \"Silver\",\r\n  \"description\": \"Alien humanoide\",\r\n  \"powers\": [\"volar\", \"fuerza\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bp-se-test-cabcd9b246a5.herokuapp.com/testuser/api/characters",
+							"protocol": "http",
+							"host": [
+								"bp-se-test-cabcd9b246a5",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"testuser",
+								"api",
+								"characters"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"id\": 23,\n  \"name\": \"Silver surfer\",\n  \"alterego\": \"Silver\",\n  \"description\": \"Alien humanoide\",\n  \"powers\": [\"volar\", \"fuerza\"]\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear personaje (nombre duplicado)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Iron Man\",\n  \"alterego\": \"Otro\",\n  \"description\": \"Otro\",\n  \"powers\": [\"Armor\"]\n}"
+				},
+				"url": {
+					"raw": "http://bp-se-test-cabcd9b246a5.herokuapp.com/testuser/api/characters",
+					"protocol": "http",
+					"host": [
+						"bp-se-test-cabcd9b246a5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"testuser",
+						"api",
+						"characters"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "400 Bad Request - Nombre duplicado",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 276,\r\n  \"name\": \"Silver surfer\",\r\n  \"alterego\": \"Silver\",\r\n  \"description\": \"Alien humanoide\",\r\n  \"powers\": [\"volar\", \"fuerza\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bp-se-test-cabcd9b246a5.herokuapp.com/testuser/api/characters",
+							"protocol": "http",
+							"host": [
+								"bp-se-test-cabcd9b246a5",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"testuser",
+								"api",
+								"characters"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": "{\n  \"error\": \"Character name already exists\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear personaje (faltan campos requeridos)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"\",\n  \"alterego\": \"\",\n  \"description\": \"\",\n  \"powers\": []\n}"
+				},
+				"url": {
+					"raw": "http://bp-se-test-cabcd9b246a5.herokuapp.com/testuser/api/characters",
+					"protocol": "http",
+					"host": [
+						"bp-se-test-cabcd9b246a5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"testuser",
+						"api",
+						"characters"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "400 Bad Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"\",\r\n  \"alterego\": \"\",\r\n  \"description\": \"\",\r\n  \"powers\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bp-se-test-cabcd9b246a5.herokuapp.com/testuser/api/characters",
+							"protocol": "http",
+							"host": [
+								"bp-se-test-cabcd9b246a5",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"testuser",
+								"api",
+								"characters"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": "{\n  \"name\": \"Name is required\",\n  \"alterego\": \"Alterego is required\",\n  \"description\": \"Description is required\",\n  \"powers\": \"Powers are required\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar personaje (exitoso)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Iron Man\",\n  \"alterego\": \"Tony Stark\",\n  \"description\": \"Updated description\",\n  \"powers\": [\"Armor\", \"Flight\"]\n}"
+				},
+				"url": {
+					"raw": "http://bp-se-test-cabcd9b246a5.herokuapp.com/testuser/api/characters/1",
+					"protocol": "http",
+					"host": [
+						"bp-se-test-cabcd9b246a5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"testuser",
+						"api",
+						"characters",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 1,\r\n  \"name\": \"Silver surfer\",\r\n  \"alterego\": \"Silver\",\r\n  \"description\": \"Humanoid Alien\",\r\n  \"powers\": [\"volar\", \"fuerza\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bp-se-test-cabcd9b246a5.herokuapp.com/testuser/api/characters/:id",
+							"protocol": "http",
+							"host": [
+								"bp-se-test-cabcd9b246a5",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"testuser",
+								"api",
+								"characters",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "656"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": "{\n  \"id\": 1,\n  \"name\": \"Iron Man\",\n  \"alterego\": \"Tony Stark\",\n  \"description\": \"Updated description\",\n  \"powers\": [\"Armor\", \"Flight\"]\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar personaje (no existe)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Iron Man\",\n  \"alterego\": \"Tony Stark\",\n  \"description\": \"Updated description\",\n  \"powers\": [\"Armor\", \"Flight\"]\n}"
+				},
+				"url": {
+					"raw": "http://bp-se-test-cabcd9b246a5.herokuapp.com/testuser/api/characters/999",
+					"protocol": "http",
+					"host": [
+						"bp-se-test-cabcd9b246a5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"testuser",
+						"api",
+						"characters",
+						"999"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "404 Not Found",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://bp-se-test-cabcd9b246a5.herokuapp.com/testuser/api/characters/999",
+							"protocol": "http",
+							"host": [
+								"bp-se-test-cabcd9b246a5",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"testuser",
+								"api",
+								"characters",
+								"999"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": "{\n  \"error\": \"Character not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar personaje (exitoso)",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://bp-se-test-cabcd9b246a5.herokuapp.com/testuser/api/characters/1",
+					"protocol": "http",
+					"host": [
+						"bp-se-test-cabcd9b246a5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"testuser",
+						"api",
+						"characters",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "204 No Content",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://bp-se-test-cabcd9b246a5.herokuapp.com/testuser/api/characters/:id",
+							"protocol": "http",
+							"host": [
+								"bp-se-test-cabcd9b246a5",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"testuser",
+								"api",
+								"characters",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "656"
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n  \"id\": 274,\r\n  \"name\": \"Silver surfer\",\r\n  \"alterego\": \"Silver\",\r\n  \"description\": \"Alien humanoide\",\r\n  \"powers\": [\"volar\", \"fuerza\"]\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar personaje (no existe)",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://bp-se-test-cabcd9b246a5.herokuapp.com/testuser/api/characters/999",
+					"protocol": "http",
+					"host": [
+						"bp-se-test-cabcd9b246a5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"testuser",
+						"api",
+						"characters",
+						"999"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "404 Not Found",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://bp-se-test-cabcd9b246a5.herokuapp.com/testuser/api/characters/999",
+							"protocol": "http",
+							"host": [
+								"bp-se-test-cabcd9b246a5",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"testuser",
+								"api",
+								"characters",
+								"999"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": "{\n  \"error\": \"Character not found\"\n}"
+				}
+			]
+		}
+	]
+}
